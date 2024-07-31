@@ -1,0 +1,25 @@
+.box-container {
+    position: relative;
+    padding:2.5px; 
+    border-radius: 18px; 
+    background: linear-gradient(to right, #ec407a, #ffee58); 
+    width: fit-content;
+  }
+  
+  .box-content {
+    border-radius:16px; 
+    padding: 4px;
+    color: black;
+    width: 145px;
+    height: 210px;
+    color:white;
+    overflow-y: scroll;
+  }
+
+  .gradient-text {
+    background: linear-gradient(to left, rgb(255, 89, 0), yellow);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    font-size: 4.5rem;
+  }
+  
