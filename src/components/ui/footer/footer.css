@@ -1,0 +1,15 @@
+.box-container {
+  position: relative;
+  padding:2.5px; 
+  border-radius: 18px; 
+  background: linear-gradient(to right, #ec407a, #ffee58); 
+  width: fit-content;
+}
+
+.box-content {
+  border-radius:16px; 
+  width: 260px;
+  height: 145px;
+  color:white;
+  overflow-y: scroll;
+}

@@ -14,6 +14,15 @@
      "name": "Then Thirumalai",
      "subtitle" : "Srivari Aananda Nilayam"
     },
-  "name": "kaxndjdj" 
+  "footer":{
+   "name" : "Then Thirumalai - Sri Venkateswara Swami Devastanam",
+   "subtitle" : "Contact us for your home special events and medical assistance at our Kalyana Mahal located in the temple complex." 
+  },
+  "home":{
+    "history" : {
+     "content1" : "Like the Srivari temple in Tirumala-Tirupati in Andhra pradesh, the Srivari Temple,Coimbatore in Tamilnadu is located on a natural hill amidst sylvian surroundings at an elevation of about 1000 ft. above MSL. and could be seen from at a distance. The majestic looking Gopuram above the sanctum sanctorum and the temple complex in white and grey add to the grandeur of the shrine against the backdrop of the greenish blue Nilgiri Mountains.",  
+     "content2" : "In designing this temple care has been taken to maintain the dignity and divinity of the place while making it pleasing and attractive to the pilgrims and worshippers by preserving the greenary around. The ecology of the place has been maintained with great care by retaining the green vegetation on the slopes."
+     } 
+   }    
 }
   

@@ -1,45 +1,59 @@
-import i18next from "i18next";
-import React, { lazy, useState } from "react";
-import { useTranslation } from "react-i18next";
-import Loadable from "../../loadable/loadable";
-
-import Background from '../../../assets/images/png/background.png'; 
-import Sec_content from "./submodule/sec_content";
-import First_Content from "./submodule/first_content";
-import Third_content from "./submodule/third_content";
+import { Avatar, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Typography, useMediaQuery, useTheme } from '@mui/material'
+import React, { useState } from 'react'
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
+import { Box } from '@mui/system';
+import { NavBarEn, NavBarTn } from './data';
+import { useNavigate } from 'react-router-dom';
+import Background from "../../../assets/images/png/background.png";
+import Logo from "../../../assets/images/png/thirumanlogo.png";
 
 const Header = () => {
-  const { t } = useTranslation();
-  const [isActive, setIsActive] = useState(true);
 
-  const onLanguageChange = (lang) => {
-    if (lang == "ta") {
-      setIsActive(false);
-    } else {
-      setIsActive(true);
-    }
-    i18next.changeLanguage(lang);
-  };
+ const theme = useTheme()
+ const { t, i18n } = useTranslation();
+ const cur_lang = i18n.language;
+ const navigate = useNavigate()
+ const isResponsive = useMediaQuery(theme.breakpoints.down('768'))  
+ const navContent = cur_lang == 'en' ? NavBarEn : NavBarTn
+ const [isLanguage, setIsLanuage] = useState(false)
+ const [isOpen, setIsOpen] = useState(false)
 
+ const OnTaggleDrawer = (drawer) => ()  => {
+  setIsOpen(drawer)
+ }
+ 
+  const OnNavigate  = (path) => () => {
+   navigate(path)
+   setIsOpen(false)
+   console.log(path)
+  }
+  
+  const OnChangeLanuage = (lang, status) => () => {
+   setIsLanuage(status)
+   i18n.changeLanguage(lang)
+  }
+  
+ 
   return (
-    <>
-      <div className='relative bg-primary z-0 align-middle py-8 px-10 pl-36 items-center'>
-        {/* <marquee> */}
-          <h5 className='text-6 text-white font-normal text-ellipsis drunk truncate ml-12' style={{paddingBlock:'1.4px'}}>
-            {t("header.title")}
-          </h5>
-        {/* </marquee> */}
-
-        <div className='absolute bg-gradient-p-s h-10 w-36 z-1 left-0 top-0 flex items-center px-5 opacity-95'>
-          <div
+   <>
+    <div className='relative bg-primary flex items-center cursor-pointer'>
+     <div className='bg-gradient-p-s w-fit flex items-center opacity-95 py-5'>
+      {isResponsive ? <IconButton size="small" onClick={OnTaggleDrawer(true)}><MenuOutlinedIcon sx={{color:'white', fontSize:24}}/></IconButton> 
+      : 
+      <>
+            <motion.div
+            onClick={OnChangeLanuage("ta", false)}
+            whileHover={{scale:1.1}}
+            whileTap={{ scale:1.0}}
             className={
-              isActive
+              isLanguage
                 ? "p-2 rounded-25 px-10 ml-12 items-center text-white cursor-pointer"
                 : "bg-yellow-500 p-3 rounded-25 px-10 items-center flex cursor-pointer"
-            }
-            onClick={() => onLanguageChange("ta")}
-          >
-            {!isActive && (
+             }
+            >
+            {!isLanguage && (
               <svg
                 width='13'
                 height='13'
@@ -53,19 +67,23 @@ const Header = () => {
                 />
               </svg>
             )}
-            <p className={`text-5 ${isActive ? "font-normal" : "font-bold"}`}>
+            <p className={`text-5 ${isLanguage ? "font-normal" : "font-bold"}`}>
               தமிழ்
             </p>
-          </div>
-          <div
+          </motion.div>
+          
+          <motion.div
+            onClick={OnChangeLanuage("en", true)}
+            animate={{x:5}}
+            whileHover={{scale:1.1}}
+            whileTap={{ scale:1.0}}
             className={
-              isActive
-                ? "bg-yellow-500 p-4 rounded-25 px-8 items-center flex cursor-pointer"
-                : "p-2 rounded-25 px-10 items-center text-white cursor-pointer"
-            }
-            onClick={() => onLanguageChange("en")}
-          >
-            {isActive && (
+              !isLanguage
+                ? "p-2 rounded-25 px-10 ml-12 items-center text-white cursor-pointer"
+                : "bg-yellow-500 p-3 rounded-25 px-10 items-center align-middle flex cursor-pointer"
+             }
+            >
+            {isLanguage && (
               <svg
                 width='13'
                 height='13'
@@ -79,21 +97,40 @@ const Header = () => {
                 />
               </svg>
             )}
-            <p className={`text-5 ${!isActive ? "font-normal" : "font-bold"}`}>
+            <p className={`text-5 ${!isLanguage ? "font-normal" : "font-bold"} pt-2`}>
               English
             </p>
-          </div>
-        </div>
-      </div>
-      <div style={{backgroundImage: `url(${Background})`}}
-      className="w-full h-screen bg-cover bg-center flex justify-between p-10"
-    >
-       <First_Content/>
-       <Sec_content/>
-       <Third_content/>
-      </div>
-    </>
-  );
-};
+          </motion.div>
+           </>
+       }
+     </div>
+     <Typography className={`text-white truncate ${isResponsive ? 'pl-0' : 'pl-12 pt-3'}`} variant='h5'>{t("header.title")}</Typography>
+     {/* <div>Live</div> */}
+    </div>
 
-export default Header;
+    <div className='relative w-screen bg-center bg-cover h-screen' style={{backgroundImage:`url(${Background})`, minHeight:'480px', maxHeight:'100vh'}}>
+     {isResponsive ? 
+     <div className='p-5 w-full flex flex-col justify-center'>
+      <img src={Logo} alt='logo' variant='square' className='w-28 h-auto m-auto'/> 
+     </div> 
+     : 
+     <di>Tests</di>}  
+    </div>
+
+    <Drawer open={isOpen} onClose={OnTaggleDrawer(false)}>
+     <Box sx={{width:'210px', padding:'10px'}}>
+      
+      <List >
+       {navContent.map((nav, idx) => (
+        <ListItem key={idx} disablePadding className='cursor-pointer' onClick={OnNavigate(nav.path)}>
+         <Typography variant='h5' py={1}>{nav.name}</Typography>
+        </ListItem> 
+       ))}  
+      </List>
+     </Box>
+    </Drawer>
+   </>
+  )
+}
+
+export default Header
