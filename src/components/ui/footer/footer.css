@@ -6,10 +6,3 @@
   width: fit-content;
 }
 
-.box-content {
-  border-radius:16px; 
-  width: 260px;
-  height: 145px;
-  color:white;
-  overflow-y: scroll;
-}

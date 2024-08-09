@@ -1,13 +1,20 @@
-import { Avatar, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Avatar, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useState } from 'react'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 import { Box } from '@mui/system';
 import { NavBarEn, NavBarTn } from './data';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Background from "../../../assets/images/png/background.png";
+import Perumal from "../../../assets/images/png/perumal.png";
 import Logo from "../../../assets/images/png/thirumanlogo.png";
+import KeyboardTabRoundedIcon from '@mui/icons-material/KeyboardTabRounded';
+import './index.css'
+import Third_content from './submodule/third_content'
+import HomeContent from './submodule/homeContent';
+import First_Content from './submodule/first_content';
+import Sec_content from './submodule/sec_content';
 
 const Header = () => {
 
@@ -19,6 +26,9 @@ const Header = () => {
  const navContent = cur_lang == 'en' ? NavBarEn : NavBarTn
  const [isLanguage, setIsLanuage] = useState(false)
  const [isOpen, setIsOpen] = useState(false)
+ const [isRight, setIsRight] = useState(false)
+ const location = useLocation()
+ const isMainContent = Boolean(location.pathname == '/home') || location.pathname == '/'
 
  const OnTaggleDrawer = (drawer) => ()  => {
   setIsOpen(drawer)
@@ -108,14 +118,24 @@ const Header = () => {
      {/* <div>Live</div> */}
     </div>
 
-    <div className='relative w-screen bg-center bg-cover h-screen' style={{backgroundImage:`url(${Background})`, minHeight:'480px', maxHeight:'100vh'}}>
-     {isResponsive ? 
-     <div className='p-5 w-full flex flex-col justify-center'>
-      <img src={Logo} alt='logo' variant='square' className='w-28 h-auto m-auto'/> 
-     </div> 
-     : 
-     <di>Tests</di>}  
-    </div>
+   {isMainContent && <div className={isResponsive ? 'relative w-full bg-center bg-cover h-full' : 'relative w-full h-full bg-cover bg-center flex justify-between p-10'} style={{backgroundImage:`url(${Background})`, minHeight:isResponsive ? '420px' : '620px', maxHeight:'1200px'}}>
+      {isResponsive ? 
+      <div className='p-5 w-full flex flex-col justify-center'>
+       <img src={Logo} alt='logo' variant='square' className='w-28 h-auto m-auto'/> 
+        <Typography align='center' className={cur_lang == 'en' ? 'bg-logo_english_big' :'bg-logo_tamil_big'} mt={12} />
+       <img src={Perumal} alt='logo' variant='square' className='absolute bottom-1 h-auto m-auto left-0 right-0 w-fit' style={{width:'320px'}}/> 
+       <div className='absolute right-0 top-1/4 bg-gradient-p-s rounded-s-25' onClick={()=>setIsRight(true)}>
+        <SvgIcon className='text-white  cursor-pointer m-4'><KeyboardTabRoundedIcon sx={{fontSize:'26px'}}/></SvgIcon>
+       </div>
+       </div>     
+      :
+      <>
+       <First_Content />
+       <Sec_content/>
+       <Third_content />
+      </>
+      }      
+    </div>}
 
     <Drawer open={isOpen} onClose={OnTaggleDrawer(false)}>
      <Box sx={{width:'210px', padding:'10px'}}>
@@ -127,6 +147,14 @@ const Header = () => {
         </ListItem> 
        ))}  
       </List>
+     </Box>
+    </Drawer>
+
+    <Drawer open={isRight} onClose={() => setIsRight(false)} anchor='right' sx={{'& .MuiDrawer-paper': {backgroundColor:'transparent'}}}>
+     <Box className='bg-yellow-950 h-full rounded-s-25 box-contain p-10'>
+      <div className='w-full h-full rounded-s-25 text-white p-10 overflow-y-scroll' style={{width:210, backgroundColor:'#20130E'}}>
+       <HomeContent/> 
+      </div>
      </Box>
     </Drawer>
    </>

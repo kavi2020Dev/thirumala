@@ -62,7 +62,7 @@ const NavbarContent = () => {
   return (
    <>
    <Header/>
-    <div style={{backgroundImage:`url(${background})`}} className='bg-yellow-500 w-full mb-10 flex justify-center items-center p-6'>
+    <div style={{backgroundImage:`url(${background})`}} className='bg-yellow-500 w-full flex justify-center items-center p-6'>
     {isResponsive ? <div className='p-5'/> : data?.map((nav, idx) => (
      <motion.div
       key={idx}

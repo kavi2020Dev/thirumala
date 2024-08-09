@@ -6,13 +6,29 @@
       transform: translateX(-100%);
     }
   }
-  
-  /* .marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
+
+  .box-contain {
+    position: relative;
+    padding:2.5px; 
+    /* border-radius: 18px;  */
+    background: linear-gradient(to right, #ec407a, #ffee58); 
+    width: fit-content;
   }
   
-  .marquee:hover .marquee-content {
-    animation: marquee 20s linear infinite;
-  } */
+  @media (min-width: 240px) and (max-width: 768px) {
+    .bg-logo_english_big {
+      width: 281px;
+      height: 50px;
+      background: url(/src/assets/fonts/logo_web_sprite.png) 12px -160px;
+      position: absolute;
+      background-size: cover;
+    }
+    .bg-logo_tamil_big {
+      width: 281px;
+      height: 50px;
+      background: url(/src/assets/fonts/logo_web_sprite.png) 12px -77px;
+      position: absolute;
+      background-size: cover;
+      margin:'auto'
+    }
+  }

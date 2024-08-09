@@ -3,6 +3,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import History from '../../components/layout/home/history'
 import Slider from '../../components/layout/home/slider'
+import CustomizeYt from '../../components/layout/home/youtube'
 
 const Home = () => {
  const {t} = useTranslation()  
@@ -11,6 +12,7 @@ const Home = () => {
      <div className='relative w-full'>
       <History/>
       <Slider/>
+      <CustomizeYt/>
      </div>
     </>
   )

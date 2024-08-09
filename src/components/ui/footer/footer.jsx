@@ -5,7 +5,7 @@ import Fb from '../../../assets/images/png/fb.png'
 import Insta from '../../../assets/images/png/insta.png'
 import X from '../../../assets/images/png/x.png'
 import { useTranslation } from 'react-i18next'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, styled, Typography, useMediaQuery, useTheme } from '@mui/material'
 import './footer.css';
 import { motion } from "framer-motion";
 
@@ -14,6 +14,14 @@ const Footer = () => {
  const theme = useTheme()
  const isResponsive = useMediaQuery(theme.breakpoints.down('768')) 
  const cur_lang = i18n.language
+
+ const Condent = styled(Box)({ 
+  borderRadius:'16px',
+  width: '260px',
+  height:'145px',
+  color:'white',
+  overflowY: 'scroll',
+ })
 
   return (
     <div className='relative w-full'>     
@@ -35,9 +43,9 @@ const Footer = () => {
         </div>
 
         {isResponsive ? null : <motion.div className='box-container mt-8'>
-         <div className='mt-1 box-content'>  
+         <Condent className='mt-1'>  
          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.4859377585963!2d76.98550277334138!3d11.299149249338027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8ef6b24e8df69%3A0x358d0da9196ed11f!2sThen%20Tirupati%20Tirumala%20Srivari%20Ananda%20Nilayam!5e0!3m2!1sen!2sin!4v1722834088863!5m2!1sen!2sin" width="100%" style={{borderRadius:'14px'}} height="145" loading="lazy"></iframe>
-         </div>
+         </Condent>
         </motion.div>}
 
        </div>
