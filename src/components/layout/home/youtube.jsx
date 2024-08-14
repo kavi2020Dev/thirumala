@@ -1,5 +1,5 @@
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import React from 'react'
+import { Link, Skeleton, Typography, useMediaQuery, useTheme } from '@mui/material'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 // Import slick-carousel css
@@ -11,7 +11,8 @@ const CustomizeYt = () => {
  const {t, i18n} = useTranslation() 
  const curr_lang = i18n.language 
  const theme = useTheme()
-const isResponsive = useMediaQuery(theme.breakpoints.down(768))
+ const isResponsive = useMediaQuery(theme.breakpoints.down(768))
+ const [loading, setLoading] = useState(true);
 
  const settings = {
   dots: false,
@@ -50,13 +51,18 @@ const isResponsive = useMediaQuery(theme.breakpoints.down(768))
 };
  
  const tnVideoUrl = [
-  {path : 'https://www.youtube.com/embed/_vPCwHDgn3U?si=WFASHKg8-KFr873y', name:'Srivari Annual Vasanthotsavam 2024'},
-  {path : 'https://www.youtube.com/embed/zKC17254flc?si=0cmmf6d3pSyRWSda', name:'Sri Vishnu Sahasranamam'},
-  {path : 'https://www.youtube.com/embed/_vPCwHDgn3U?si=WFASHKg8-KFr873y', name:'Srivari Annual Vasanthotsavam 2024'},
-  {path : 'https://www.youtube.com/embed/zKC17254flc?si=0cmmf6d3pSyRWSda', name:'Sri Vishnu Sahasranamam'},
-  {path : 'https://www.youtube.com/embed/_vPCwHDgn3U?si=WFASHKg8-KFr873y', name:'Srivari Annual Vasanthotsavam 2024'},
-  {path : 'https://www.youtube.com/embed/zKC17254flc?si=0cmmf6d3pSyRWSda', name:'Sri Vishnu Sahasranamam'},
+  {path : 'https://www.youtube.com/embed/decLBBM8j6A?si=qm3xIuYae83XkNDa', name:'Srivari Theppotsavam Vaibhavam 2024'},
+  {path : 'https://www.youtube.com/embed/YQpuSjeEse0?si=7ALuuZElWNL4q6gl', name:'Srivari Annual Vasanthotsavam 2024'},
+  {path : 'https://www.youtube.com/embed/8yqxcJMno3I?si=oHpUSWWFVjjNdvsa', name:'Then Tirumala Kaisika dwadasi ugra srinivasa purapadu'},
+  {path : 'https://www.youtube.com/embed/R_r1-40wI3s?si=3CQLNeTn6nD89iGd', name:'Navaratri Brahmotsavam Day 5 Garuda seva'},
+  {path : 'https://www.youtube.com/embed/e0Yx0n6DjuY?si=kA-8NusFY7tZxnhU', name:'Navaratri Brahmotsavam '},
+  {path : 'https://www.youtube.com/embed/0UpkBRfh8B4?si=Z--p8naoVvr8ndFy', name:'Then Thirumalai vikansachachariyar utsavam Day'},
   ]
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div className='w-full p-10 px-12 mt-12' style={{ backgroundImage: 'linear-gradient(to Left, #795548, #3e2723)'}}>
@@ -95,19 +101,30 @@ const isResponsive = useMediaQuery(theme.breakpoints.down(768))
       />
     </defs>
       </svg>
-      <Typography variant='h6' fontWeight={350} className='text-white pl-4'>@ThenThirupathiThirumalai</Typography> 
+      <Link underline='none' href="https://www.youtube.com/@ThenThirumalai"  target="_blank" rel="noopener noreferrer">
+       <Typography variant='h6' fontWeight={350} className='text-white pl-4 pt-2'>@ThenThirupathiThirumalai</Typography> 
+      </Link>
       </div>}
 
      </div>
-     <div className='slider-container'>
-       <Slider {...settings}>
-        {tnVideoUrl.map((video, idx) => (
-         <div key={idx} className='cursor-pointer m-10'>
-          <iframe width="90%" height="115" src={video.path} title="YouTube video player" style={{border:'2px solid white'}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>  
-          <Typography variant='h6' fontWeight={450} mt={0.60} className='text-white'>{video.name}</Typography>
+      <div className='overflow-x-scroll flex'>
+       {tnVideoUrl.map((video, idx) => (
+         <div key={idx} className='cursor-pointer mx-10 mt-10'>
+         {loading ? 
+          <Skeleton
+          variant="rectangular"
+          width={240}
+          height={130}
+          sx={{ borderRadius: 1 }}
+         /> :
+         <>
+          <iframe width="240px" height="130px" src={`${video.path}?autoplay=0&controls=0&disablekb=1`} title="YouTube video player" onLoad={() =>setLoading(false)} style={{border:'2px solid white'}}></iframe>  
+          <Link underline='none' href={video.path} target="_blank" rel="noopener noreferrer">
+           <Typography variant='h6' lineHeight={1.3} fontWeight={450} mt={0.8} className='text-white'>{video.name}</Typography>
+          </Link>
+         </>}
          </div>  
          ))}
-       </Slider>  
       </div>
     </div>
 

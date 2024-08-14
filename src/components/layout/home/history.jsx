@@ -16,7 +16,7 @@ const History = () => {
  }
 
   return (
-    <div className={isResponsive ? 'p-10' :'p-12 px-14'}>
+    <div className={isResponsive ? 'p-10' :'px-14'} style={{paddingBlock:isResponsive ? '10px' : '30px'}}>
      <Typography variant='h6' fontWeight={450}>{t('home.history.content1')}</Typography>   
      <Typography variant='h6' mt={1} fontWeight={450}>{t('home.history.content2')}</Typography>   
      {isVisible && 
@@ -60,7 +60,9 @@ const History = () => {
        }
       </div>
      </motion.div>}
-     {isVisible ? <Typography variant='h6' onClick={OnMoreData(false)} className='text-blue-600 cursor-pointer' align='right'>{cur_lang == 'en' ? 'Hide Content...' : 'உள்ளடக்கத்தை மறை...'}</Typography> : <Typography variant='h6' onClick={OnMoreData(true)} className='text-blue-600 cursor-pointer' align='right'>{cur_lang == 'en' ? 'Read More...' : 'மேலும் படிக்க...'}</Typography>}
+     <div className='flex justify-end'>
+     {isVisible ? <Typography variant='h6' onClick={OnMoreData(false)} className='text-blue-600 cursor-pointer w-56' align='right'>{cur_lang == 'en' ? 'Hide Content...' : 'உள்ளடக்கத்தை மறை...'}</Typography> : <Typography variant='h6' onClick={OnMoreData(true)} className='text-blue-600 cursor-pointer w-32' align='right'>{cur_lang == 'en' ? 'Read More...' : 'மேலும் படிக்க...'}</Typography>}
+     </div>
     </div>
   )
 }

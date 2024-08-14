@@ -34,7 +34,7 @@ const TempleHistory = () => {
   const isContent = activeIndex == 0 ? ContentData : ContentTwoData;
 
   return (
-    <div className='relative w-screen bg-center bg-cover p-10' style={{backgroundImage:`url(${activeIndex == 0 ? Background : SecBackground})`, minHeight:'480px', maxHeight:'100vh',    boxShadow: 'inset 420px 44px 25px rgba(0, 0, 0, 0.5)' }}>
+    <div className='relative w-screen bg-center bg-cover p-10' style={{backgroundImage:`url(${activeIndex == 0 ? Background : SecBackground})`, minHeight:'480px', maxHeight:'100vh', height:'100vh', boxShadow: 'inset 420px 44px 25px rgba(0, 0, 0, 0.5)' }}>
      <ul className='flex justify-center cursor-pointer'>
         {menuItems.map((item, index) => (
           <li
@@ -45,7 +45,7 @@ const TempleHistory = () => {
             <Typography
               variant='h5'
               textAlign='center'
-              fontWeight={500}
+              fontWeight={550}
               className={`text-yellow-500 ${activeIndex === index ? 'active' : ''}`}
             >
               {item}

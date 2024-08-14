@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../header/header'
 import { useLocation, useNavigate } from 'react-router-dom'
 import background from '../../../assets/images/png/navbarbg.png'
@@ -58,26 +58,37 @@ const NavbarContent = () => {
  const isResponsive = useMediaQuery(theme.breakpoints.down('768')) 
  const lanuage = i18n.language;
  const data = lanuage == 'en' ? navbarData : navbarTwo;
+ const [isSticky, setIsSticky] = useState(false);
+
+ const handleScroll = () => {
+  const headerHeight = 0; 
+  if (window.scrollY > headerHeight) {
+    setIsSticky(true);
+  } else {
+    setIsSticky(false);
+  }
+};
+
+useEffect(() => {
+  window.addEventListener('scroll', handleScroll);
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
 
   return (
    <>
    <Header/>
-    <div style={{backgroundImage:`url(${background})`}} className='bg-yellow-500 w-full flex justify-center items-center p-6'>
+    <div style={{backgroundImage:`url(${background})`, zIndex:999, top:isSticky ? '44px' : 0 }}  className={`w-full flex justify-center items-center p-6 bg-no-repeat bg-cover ${isSticky ? 'fixed top-12' : 'relative'}`}>
     {isResponsive ? <div className='p-5'/> : data?.map((nav, idx) => (
-     <motion.div
-      key={idx}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: idx * 0.1 }}
-      whileHover={{scale:0.9}}
-      className={(location.pathname === '/' ? '/home' : location.pathname) === nav.path ? 
+     <div key={idx} className={(location.pathname === '/' ? '/home' : location.pathname) === nav.path ? 
        'bg-black text-white flex mx-6 cursor-pointer py-3 items-center rounded-15' : 
        'flex mx-6 cursor-pointer py-3 items-center rounded-15'
      }
      onClick={() => navigate(`${nav.path}`)}
-   >
+      >
       <Typography variant='h5' className='px-12 pt-1'>{nav.name}</Typography>  
-     </motion.div>   
+     </div>   
     ))}
     </div>
    </>

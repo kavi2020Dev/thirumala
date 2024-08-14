@@ -1,0 +1,108 @@
+.header{
+ position: fixed;    
+ background-color: #131F3E;
+ top:0;
+ z-index:9;
+ width:100%;
+ display: flex;
+ align-items: center;
+ height: 44px;
+}
+
+.language_container {
+ width: fit-content;
+ display:flex;
+ padding: 9px;
+ background: linear-gradient(270deg, rgba(19, 31, 62, 0) 8.33%, #131F3E 32.63%, #61189A 100%);
+ align-items: center;
+}
+
+.lanugage_content {
+ border-radius: 25;  
+ color: white; 
+ cursor:pointer;
+ padding-block: 3px;
+ padding-inline: 8px;
+}
+
+.lanugage_content_active {
+ border-radius: 25px;  
+ color: black; 
+ cursor:pointer;
+ display: flex;
+ background-color: #FFD601;
+ align-items: inherit;
+ height: 26px;
+ padding-inline: 12px;
+}
+
+.header_content {
+ position: relative;
+ top:44px;
+ width: 100%;
+ padding-inline:10px;  
+ height:calc(100vh - 44px);
+ min-height:520px; 
+ margin-bottom: 44px;
+ background: linear-gradient(107.58deg, #544D2C 2.66%, rgba(41, 46, 54, 0.8) 39.84%, rgba(41, 46, 54, 0.8) 62.24%, #534C2C 97.99%);
+}
+
+.header-ellipsi {
+    background-image: url('../../../assets/images/png/subsvg.svg');   
+    width:80%; 
+    height: -webkit-fill-available;
+    position: absolute;
+    background-size: cover;
+    z-index: 1; 
+    top: 0px;
+    background-position: bottom;
+    margin: auto;
+    left: 10%;
+}
+
+
+
+
+@media (min-width : 1200px) and (max-width:2600px) {
+}
+
+@media (min-width : 560px) and (max-width:768px) {
+  .header_content {
+    min-height:580px; 
+    height:auto;
+  }   
+  .header-ellipsi {
+    display: none;
+   }
+}
+
+@media (min-width : 420px) and (max-width:560px) {
+  .header_content {
+    min-height:560px; 
+    height:auto;
+  }   
+  .header-ellipsi {
+    display: none;
+   }
+}
+
+@media (min-width : 260px) and (max-width:428px) {
+ .header_content {
+   min-height:520px; 
+   height:auto;
+ }   
+ .header-ellipsi {
+  display: none;
+ }
+ .language_container {
+  width: fit-content;
+  display:flex;
+  padding:6px;
+  background: linear-gradient(270deg, rgba(19, 31, 62, 0) 8.33%, #131F3E 32.63%, #61189A 100%);
+  align-items: center;
+ }
+}
+
+
+
+

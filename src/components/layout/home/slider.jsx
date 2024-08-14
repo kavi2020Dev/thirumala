@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { Avatar, Grid, IconButton, styled } from '@mui/material';
+import { Avatar, Grid, IconButton, styled, useMediaQuery, useTheme } from '@mui/material';
 import One from '../../../assets/images/png/home/1.jfif';
 import Two from '../../../assets/images/png/home/2.jfif';
 import Three from '../../../assets/images/png/home/3.jfif';
@@ -33,8 +33,7 @@ const Container = styled(Grid)({
 
 const Content = styled(Grid)({
   borderRadius: "8px",
-  background: 'linear-gradient(to right, #ec407a, #ffee58)',
-});
+  background: 'linear-gradient(301.4deg, #BD219B 12.01%, #E3B614 91.99%)'});
 
 const CustomArrow = ({ className, style, onClick, icon }) => (
   <IconButton
@@ -56,6 +55,8 @@ const CustomArrow = ({ className, style, onClick, icon }) => (
 );
 
 const CustomizeSlider = () => {
+  const theme = useTheme()
+  const isResponsive = useMediaQuery(theme.breakpoints.down('768'))  
   const settings = {
     dots: false,
     infinite: false,
@@ -66,6 +67,15 @@ const CustomizeSlider = () => {
     nextArrow: <CustomArrow icon={<ArrowCircleRightRoundedIcon sx={{ fontSize: '24px' }} />} />,
     prevArrow: <CustomArrow icon={<ArrowCircleLeftRoundedIcon sx={{ fontSize: '24px' }} />} />,
     responsive: [
+      {
+        breakpoint: 1260,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          infinite: false,
+          dots: false
+        }
+      },  
       {
         breakpoint: 1024,
         settings: {
@@ -94,10 +104,10 @@ const CustomizeSlider = () => {
   };
 
   return (
-      <div className="slider-container relative px-14 cursor-pointer">
+      <div className="slider-container relative px-14 cursor-pointer" style={{marginBlockEnd:'35px'}}>
         <Slider {...settings}>
           {swipperData.map((item, idx) => (
-            <div key={idx} className='px-3'>
+            <div key={idx} className={isResponsive ? 'px-6' :'px-12'}>
               <Content>
                 <Container>
                 <Avatar variant='square' src={item?.slide} style={{ width: '100%', height: 'auto', borderRadius: '6px' }} alt='slide' />

@@ -1,20 +1,21 @@
 import { Avatar, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useState } from 'react'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 import { Box } from '@mui/system';
 import { NavBarEn, NavBarTn } from './data';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Background from "../../../assets/images/png/background.png";
+// import Ellipse from "../../../assets/images/png/bac_ellipse.png";
 import Perumal from "../../../assets/images/png/perumal.png";
 import Logo from "../../../assets/images/png/thirumanlogo.png";
-import KeyboardTabRoundedIcon from '@mui/icons-material/KeyboardTabRounded';
+import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
 import './index.css'
-import Third_content from './submodule/third_content'
-import HomeContent from './submodule/homeContent';
-import First_Content from './submodule/first_content';
-import Sec_content from './submodule/sec_content';
+import './header.css'
+import HomeContent from './list/homeContent';
+import EventList from './list/eventlist/eventlist';
+import MainContent from './list/maincontent/maincontent';
+import TodayEvent from './list/todayevent/todayevent';
+import MobileMaincontent from './list/maincontent/mobilemaincontent';
 
 const Header = () => {
 
@@ -48,21 +49,12 @@ const Header = () => {
  
   return (
    <>
-    <div className='relative bg-primary flex items-center cursor-pointer'>
-     <div className='bg-gradient-p-s w-fit flex items-center opacity-95 py-5'>
-      {isResponsive ? <IconButton size="small" onClick={OnTaggleDrawer(true)}><MenuOutlinedIcon sx={{color:'white', fontSize:24}}/></IconButton> 
+    <div className='header'>
+     <div className='language_container'>
+      {isResponsive ? <IconButton size="small" onClick={OnTaggleDrawer(true)}><MenuOutlinedIcon sx={{color:'white', fontSize:20}}/></IconButton> 
       : 
       <>
-            <motion.div
-            onClick={OnChangeLanuage("ta", false)}
-            whileHover={{scale:1.1}}
-            whileTap={{ scale:1.0}}
-            className={
-              isLanguage
-                ? "p-2 rounded-25 px-10 ml-12 items-center text-white cursor-pointer"
-                : "bg-yellow-500 p-3 rounded-25 px-10 items-center flex cursor-pointer"
-             }
-            >
+       <div onClick={OnChangeLanuage("ta", false)} className={isLanguage ? "lanugage_content" : "lanugage_content_active" }>
             {!isLanguage && (
               <svg
                 width='13'
@@ -77,22 +69,10 @@ const Header = () => {
                 />
               </svg>
             )}
-            <p className={`text-5 ${isLanguage ? "font-normal" : "font-bold"}`}>
-              தமிழ்
-            </p>
-          </motion.div>
+           <Typography variant='h5' fontWeight={isLanguage ? 400 : 600} pl={0.1}>தமிழ்</Typography>
+        </div>
           
-          <motion.div
-            onClick={OnChangeLanuage("en", true)}
-            animate={{x:5}}
-            whileHover={{scale:1.1}}
-            whileTap={{ scale:1.0}}
-            className={
-              !isLanguage
-                ? "p-2 rounded-25 px-10 ml-12 items-center text-white cursor-pointer"
-                : "bg-yellow-500 p-3 rounded-25 px-10 items-center align-middle flex cursor-pointer"
-             }
-            >
+          <div onClick={OnChangeLanuage("en", true)} className={!isLanguage ? "lanugage_content" : "lanugage_content_active"}>
             {isLanguage && (
               <svg
                 width='13'
@@ -107,35 +87,32 @@ const Header = () => {
                 />
               </svg>
             )}
-            <p className={`text-5 ${!isLanguage ? "font-normal" : "font-bold"} pt-2`}>
-              English
-            </p>
-          </motion.div>
+            <Typography variant='h5' pt={'2px'} fontWeight={isLanguage ? 600 : 400} pl={0.1}>English</Typography>
+          </div>
            </>
        }
      </div>
-     <Typography className={`text-white truncate ${isResponsive ? 'pl-0' : 'pl-12 pt-3'}`} variant='h5'>{t("header.title")}</Typography>
+     
+     <Typography className={`text-white truncate`} pt={cur_lang == 'en' ? '3px' : 0} fontWeight={450} variant='h5'>{t("header.title")}</Typography>
      {/* <div>Live</div> */}
     </div>
 
-   {isMainContent && <div className={isResponsive ? 'relative w-full bg-center bg-cover h-full' : 'relative w-full h-full bg-cover bg-center flex justify-between p-10'} style={{backgroundImage:`url(${Background})`, minHeight:isResponsive ? '420px' : '620px', maxHeight:'1200px'}}>
-      {isResponsive ? 
-      <div className='p-5 w-full flex flex-col justify-center'>
-       <img src={Logo} alt='logo' variant='square' className='w-28 h-auto m-auto'/> 
-        <Typography align='center' className={cur_lang == 'en' ? 'bg-logo_english_big' :'bg-logo_tamil_big'} mt={12} />
-       <img src={Perumal} alt='logo' variant='square' className='absolute bottom-1 h-auto m-auto left-0 right-0 w-fit' style={{width:'320px'}}/> 
-       <div className='absolute right-0 top-1/4 bg-gradient-p-s rounded-s-25' onClick={()=>setIsRight(true)}>
-        <SvgIcon className='text-white  cursor-pointer m-4'><KeyboardTabRoundedIcon sx={{fontSize:'26px'}}/></SvgIcon>
+    {isMainContent ? <div className="header_content">
+     <div className="header-ellipsi"/>
+     {isResponsive ? 
+      <div style={{zIndex:'9'}}>
+        <MobileMaincontent/>
+        <div style={{background: 'linear-gradient(90deg, #E4B614 0%, #BD219B 100%), linear-gradient(180deg, #E6C44B 0%, #BE229B 98.61%)'}} className='absolute right-0 top-1/3 bg-gradient-p-s rounded-s-25' onClick={()=>setIsRight(true)}>
+        <SvgIcon className='text-white  cursor-pointer m-4'><NavigateBeforeSharpIcon sx={{fontSize:'26px'}}/></SvgIcon>
        </div>
-       </div>     
-      :
-      <>
-       <First_Content />
-       <Sec_content/>
-       <Third_content />
-      </>
-      }      
-    </div>}
+      </div> 
+      : 
+     <div className='flex justify-between h-full'>
+      <EventList/>
+      <MainContent/>
+      <TodayEvent/>
+     </div>}
+    </div> : <div style={{marginBlockEnd:'44px'}}/>}
 
     <Drawer open={isOpen} onClose={OnTaggleDrawer(false)}>
      <Box sx={{width:'210px', padding:'10px'}}>
