@@ -3,14 +3,13 @@ import Header from '../header/header'
 import { useLocation, useNavigate } from 'react-router-dom'
 import background from '../../../assets/images/png/navbarbg.png'
 import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion';
 import { Typography, useMediaQuery, useTheme } from '@mui/material'
 
 const NavbarContent = () => {
  const navbarData = [
   {
    name:'Home',
-   path : '/home' 
+   path : '/' 
   },
   {
    name :'Temple History',
@@ -25,6 +24,10 @@ const NavbarContent = () => {
     path : '/panchangam'     
   },
   {
+   name : 'Prayer hall',  
+   path : '/prayerhall'
+  },
+  {
     name :'Others',
     path : '/other'  
   }    
@@ -32,7 +35,7 @@ const NavbarContent = () => {
  const navbarTwo = [
     {
      name:'முகப்பு',
-     path : '/home' 
+     path : '/' 
     },
     {
      name :'திருக்கோவில் சரிதம்',
@@ -45,6 +48,10 @@ const NavbarContent = () => {
     {
       name :'பஞ்சாங்கம்',
       path : '/panchangam'     
+    },
+    {
+     name : 'பிரார்த்தனை கூடம்',
+     path : '/prayerhall'    
     },
     {
       name :'மற்றவை',
@@ -61,7 +68,7 @@ const NavbarContent = () => {
  const [isSticky, setIsSticky] = useState(false);
 
  const handleScroll = () => {
-  const headerHeight = 0; 
+  const headerHeight = 550; 
   if (window.scrollY > headerHeight) {
     setIsSticky(true);
   } else {
@@ -69,19 +76,18 @@ const NavbarContent = () => {
   }
 };
 
-useEffect(() => {
-  window.addEventListener('scroll', handleScroll);
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
-}, []);
+// useEffect(() => {
+//   window.addEventListener('scroll', handleScroll);
+//   return () => {
+//     window.removeEventListener('scroll', handleScroll);
+//   };
+// }, []);
 
   return (
-   <>
-   <Header/>
-    <div style={{backgroundImage:`url(${background})`, zIndex:999, top:isSticky ? '44px' : 0 }}  className={`w-full flex justify-center items-center p-6 bg-no-repeat bg-cover ${isSticky ? 'fixed top-12' : 'relative'}`}>
+   <div>
+    <div style={{backgroundImage:`url(${background})`, zIndex:99, top:isSticky ? '44px' : 0 }}  className={`w-full flex justify-center items-center p-6 bg-no-repeat bg-cover ${isSticky ? 'fixed top-12' : 'relative'}`}>
     {isResponsive ? <div className='p-5'/> : data?.map((nav, idx) => (
-     <div key={idx} className={(location.pathname === '/' ? '/home' : location.pathname) === nav.path ? 
+     <div key={idx} className={location.pathname == nav.path ? 
        'bg-black text-white flex mx-6 cursor-pointer py-3 items-center rounded-15' : 
        'flex mx-6 cursor-pointer py-3 items-center rounded-15'
      }
@@ -91,7 +97,7 @@ useEffect(() => {
      </div>   
     ))}
     </div>
-   </>
+   </div>
   )
 }
 

@@ -1,25 +1,21 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import HttpApi from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18next from "i18next";
+import HttpBackend from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
 
-i18n
-  .use(HttpApi)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    supportedLngs: ['en', 'ta'],
-    fallbackLng: 'en',
-    detection: {
-      order: ['queryString', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-      caches: ['cookie']
-    },
-    backend: {
-      loadPath: '/locales/{{lng}}/translation.json',
-    },
-    react: {
-      useSuspense: false,
-    },
-  });
+const apiKey = "0CjZgjviAg0nTrSZARpXYw";
+const loadPath = `https://api.i18nexus.com/project_resources/translations/{{lng}}/{{ns}}.json?api_key=${apiKey}`;
 
-export default i18n;
+i18next
+.use(HttpBackend)
+.use(LanguageDetector)
+.use(initReactI18next)
+.init({
+  fallbackLng: "en",
+  ns: ["default","uthsavams","history"],
+  defaultNS: "default",
+  supportedLngs: ["en","ta"],  
+  backend: {
+    loadPath: loadPath
+  }
+})

@@ -3,9 +3,16 @@ import Background from '../../assets/images/png/history/background.png'
 import SecBackground from '../../assets/images/png/history/backsec.png'
 import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import HistoryContent from '../../components/layout/history/historycontent'
+import { useTranslation } from 'react-i18next'
+import {contentTwoDataEn, contentOneDataEn, contentTwoDataTn, contentOneDataTn} from './data'
 
 const TempleHistory = () => {
   const theme = useTheme() 
+  const {t, i18n} = useTranslation()   
+  const lanuage = i18n.language
+  const headerContent = t('history:contentOne', { returnObjects: true }) || [];    
+  const headerContent2 = t('history:contentSec', { returnObjects: true }) || [];  
+    
   const isCheck = useMediaQuery(theme.breakpoints.down('489'))
   const [activeIndex, setActiveIndex] = useState(0);
   
@@ -13,28 +20,26 @@ const TempleHistory = () => {
     setActiveIndex(index);
   };
 
-  const menuItems = [
+  const menuItemsEn = [
+    'Thiruvenkatamudayan incarnate glory',
+    'Then thirumalai',
+  ]; 
+
+  const menuItemsTn = [
     'திருவேங்கடமுடையான் அவதார மஹிமை',
     'தென் திருமலை',
   ]; 
 
-  const ContentData = [
-   {name : 'நாரதரின் பணியை நிறைவேற்ற சில உதவி தேவைப்பட்டது. பின்னர் அவர் கங்கை நதிக்கரைக்குச் சென்றார், அங்கு பல முனிவர்கள் யாகம் செய்து கொண்டிருந்தனர். முனிவர்களால் தங்கள் யாகத்தின் பலனுக்குத் தகுதியானவர் யார் என்று தீர்மானிக்க முடியவில்லை. பிருகு முனிவர் இந்து மும்மூர்த்திகளை ஆராய்வதன் மூலம் பிரச்சினையைத் தீர்க்க முடிவு செய்தார் - படைத்தவர் பிரம்மா, பாதுகாவலர் விஷ்ணு மற்றும் அழிப்பவர் சிவன்.'}, 
-   {name : 'முனிவர்களால் தங்கள் யாகத்தின் பலனுக்குத் தகுதியானவர் யார் என்று தீர்மானிக்க முடியவில்லை. பிருகு முனிவர் இந்து மும்மூர்த்திகளை ஆராய்வதன் மூலம் பிரச்சினையைத் தீர்க்க முடிவு செய்தார் - படைத்தவர் பிரம்மா, பாதுகாவலர் விஷ்ணு மற்றும் அழிப்பவர் சிவன்.'}, 
-   {name : 'நாரதரின் பணியை நிறைவேற்ற சில உதவி தேவைப்பட்டது. பின்னர் அவர் கங்கை நதிக்கரைக்குச் சென்றார், அங்கு பல முனிவர்கள் யாகம் செய்து கொண்டிருந்தனர். முனிவர்களால் தங்கள் யாகத்தின் பலனுக்குத் தகுதியானவர் யார் என்று தீர்மானிக்க முடியவில்லை. பிருகு முனிவர் இந்து மும்மூர்த்திகளை ஆராய்வதன் மூலம் பிரச்சினையைத் தீர்க்க முடிவு செய்தார் - படைத்தவர் பிரம்மா, பாதுகாவலர் விஷ்ணு மற்றும் அழிப்பவர் சிவன்.'}, 
-   {name : 'முனிவர்களால் தங்கள் யாகத்தின் பலனுக்குத் தகுதியானவர் யார் என்று தீர்மானிக்க முடியவில்லை. பிருகு முனிவர் இந்து மும்மூர்த்திகளை ஆராய்வதன் மூலம் பிரச்சினையைத் தீர்க்க முடிவு செய்தார் - படைத்தவர் பிரம்மா, பாதுகாவலர் விஷ்ணு மற்றும் அழிப்பவர் சிவன்.'} 
-  ]
+  const Thenthiru_Con = t('history:thenthirumalai-content', { returnObjects: true }) || [];
+  const contentOne = lanuage == 'en' ? contentOneDataEn : contentOneDataTn
+  const contentTwo = lanuage == 'en' ? contentTwoDataEn : contentTwoDataTn
 
-  const ContentTwoData = [
-    {name : 'முனிவர்களால் தங்கள் யாகத்தின் பலனுக்குத் தகுதியானவர் யார் என்று தீர்மானிக்க முடியவில்லை. பிருகு முனிவர் இந்து மும்மூர்த்திகளை ஆராய்வதன் மூலம் பிரச்சினையைத் தீர்க்க முடிவு செய்தார் - படைத்தவர் பிரம்மா, பாதுகாவலர் விஷ்ணு மற்றும் அழிப்பவர் சிவன்.'}, 
-    {name : 'நாரதரின் பணியை நிறைவேற்ற சில உதவி தேவைப்பட்டது. பின்னர் அவர் கங்கை நதிக்கரைக்குச் சென்றார், அங்கு பல முனிவர்கள் யாகம் செய்து கொண்டிருந்தனர். முனிவர்களால் தங்கள் யாகத்தின் பலனுக்குத் தகுதியானவர் யார் என்று தீர்மானிக்க முடியவில்லை. பிருகு முனிவர் இந்து மும்மூர்த்திகளை ஆராய்வதன் மூலம் பிரச்சினையைத் தீர்க்க முடிவு செய்தார் - படைத்தவர் பிரம்மா, பாதுகாவலர் விஷ்ணு மற்றும் அழிப்பவர் சிவன்.'}, 
-    {name : 'முனிவர்களால் தங்கள் யாகத்தின் பலனுக்குத் தகுதியானவர் யார் என்று தீர்மானிக்க முடியவில்லை. பிருகு முனிவர் இந்து மும்மூர்த்திகளை ஆராய்வதன் மூலம் பிரச்சினையைத் தீர்க்க முடிவு செய்தார் - படைத்தவர் பிரம்மா, பாதுகாவலர் விஷ்ணு மற்றும் அழிப்பவர் சிவன்.'}, 
-  ]
-
-  const isContent = activeIndex == 0 ? ContentData : ContentTwoData;
+  const menuItems = lanuage == 'en' ? menuItemsEn : menuItemsTn
+  const isContent = activeIndex == 0 ? contentOne : contentTwo;
 
   return (
-    <div className='relative w-screen bg-center bg-cover p-10' style={{backgroundImage:`url(${activeIndex == 0 ? Background : SecBackground})`, minHeight:'480px', maxHeight:'100vh', height:'100vh', boxShadow: 'inset 420px 44px 25px rgba(0, 0, 0, 0.5)' }}>
+   <div className='relative w-screen bg-center bg-cover p-10' style={{backgroundImage:`url(${activeIndex == 0 ? Background : SecBackground})`, minHeight:'480px', maxHeight:'100vh', height:'100vh', boxShadow: 'inset 1420px 44px 25px rgba(0, 0, 0, 0.5)' }}>
+    <div style={{maxWidth:'1200px', width:'100%', margin:'auto'}}>
      <ul className='flex justify-center cursor-pointer'>
         {menuItems.map((item, index) => (
           <li
@@ -86,11 +91,12 @@ const TempleHistory = () => {
         ))}
       </ul>
      
-     <div className={'absolute bottom-1 w-full'} style={{minWidth:'60px', maxWidth:'400px', paddingInline:isCheck ?'0px':'10px'}}>
+     <div className={'absolute w-full'} style={{minWidth:'60px', maxWidth:'400px', paddingInline:isCheck ?'0px':'10px',bottom:'5.5rem'}}>
       <HistoryContent data={isContent}/>
      </div>
 
     </div>
+   </div>
   )
 }
 

@@ -7,9 +7,12 @@ import CustomizeYt from '../../components/layout/home/youtube'
 
 const Home = () => {
  const {t} = useTranslation()  
+ 
+ console.log(t("one"))
+
   return (
     <>
-     <div className='relative w-full'>
+     <div className='relative w-full' style={{backgroundColor:'#EFEFEF'}}>
       <History/>
       <Slider/>
       <CustomizeYt/>

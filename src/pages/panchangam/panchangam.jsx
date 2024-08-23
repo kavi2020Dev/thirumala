@@ -2,7 +2,7 @@ import React from 'react'
 
 const Panchangam = () => {
   return (
-    <div className='w-full h-screen justify-center items-center'>Under Maintanance</div>
+    <div className='grid place-content-center w-full h-screen'>Under Maintanance</div>
   )
 }
 

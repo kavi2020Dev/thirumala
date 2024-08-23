@@ -1,7 +1,7 @@
 export const NavBarEn = [
   {
     name: "Home",
-    path: "/home",
+    path: "/",
   },
   {
     name: "Temple History",
@@ -24,7 +24,7 @@ export const NavBarEn = [
 export const NavBarTn = [
   {
     name: "முகப்பு",
-    path: "/home",
+    path: "/",
   },
   {
     name: "திருக்கோவில் சரிதம்",
