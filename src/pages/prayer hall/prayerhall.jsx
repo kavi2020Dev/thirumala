@@ -38,7 +38,7 @@ const Prayerhall = () => {
               align="center"
             >
               {lanuage == "en"
-                ? "Srivari Ananda Nilaiyam"
+                ? "Srivari Ananda Nilayam"
                 : "ஸ்ரீவாரி ஆனந்த நிலையம்"}
             </Typography>
             <Typography
