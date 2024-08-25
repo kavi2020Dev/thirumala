@@ -26,8 +26,6 @@ const Prayerhall = () => {
             width: "100%",
             margin: "auto",
             backgroundColor: "white",
-            maxHeight:'100vh',
-            minHeight:'1100px'
           }}
         >
           <div style={{ paddingBlock: "26px" }}>
