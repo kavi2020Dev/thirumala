@@ -22,7 +22,8 @@ const theme = createTheme({
     },
     h3: {
       fontSize: '1.15rem',
-      fontWeight: 400,
+      fontWeight: 600,
+      marginBlockEnd:"10px"
     },
      h4: {
       fontSize: '1rem',
@@ -31,6 +32,7 @@ const theme = createTheme({
     h5: {
       fontSize: '0.85rem',
       fontWeight: 500,
+      lineHeight: 1.8,
     },
     h6: {
      fontSize:'0.75rem',

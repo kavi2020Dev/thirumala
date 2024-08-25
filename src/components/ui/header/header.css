@@ -73,7 +73,7 @@
    height:auto;
  }   
  .header-ellipsi {
-  top: 0;
+  top:-10px;
   display: none;
 }
  .language_container {

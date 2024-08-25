@@ -1,0 +1,26 @@
+.prayerhall-border {
+    border-bottom: 30px solid transparent;
+    border-image: url(/src/assets/images/png/uthvash/border.png) 50 round;
+    mix-blend-mode: multiply;   
+}
+
+.prayer-hall-title {
+    font-style: normal;
+    font-weight: 900;
+    background: linear-gradient(92.91deg, #FFD601 1.17%, #BD219B 58.15%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Ensure text color is transparent */
+}
+
+.divder {/* Line 10 */
+
+    position: absolute;
+    width: 1256px;
+    height: 0px;
+    left: calc(50% - 1256px/2);
+    top: 1163px;
+    
+    
+}

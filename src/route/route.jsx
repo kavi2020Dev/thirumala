@@ -10,6 +10,7 @@ import Footer from '../components/ui/footer/footer'
 import { CircularProgress } from '@mui/material'
 import Prayerhall from '../pages/prayer hall/prayerhall'
 import Header from '../components/ui/header/header'
+import ScrollToTop from '../components/utils/scrollToTop'
 
 
 const RouterSetup = () => {
@@ -21,6 +22,7 @@ const RouterSetup = () => {
      <NavbarContent/>
     </div>
     <Suspense fallback={<div className='grid place-content-center w-full h-screen'><CircularProgress size={20}/></div>}> 
+    <ScrollToTop />
     <Routes>
      {/* <Route path='/home' Component={Home}/>  */}
      <Route path='/other' Component={Others}/> 

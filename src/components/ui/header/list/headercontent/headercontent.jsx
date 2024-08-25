@@ -49,7 +49,7 @@ const HeaderContent = () => {
    <>
     <div className='header cursor-pointer'>
      <div className="language_container">
-     {isMobile ? <IconButton sx={{py:1.8, px:1.5}} size="small" onClick={OnTaggleDrawer(true)}><MenuOutlinedIcon sx={{color:'white', fontSize:16}}/></IconButton> : 
+     {isMobile ? <IconButton sx={{py:1.8, px:1.5}} size="small" onClick={OnTaggleDrawer(true)}><MenuOutlinedIcon sx={{color:'white', fontSize:22}}/></IconButton> : 
      <div className='flex items-center py-9 pl-5'>
       <div onClick={OnChangeLanguage("ta", false)} className={isLanguage ? "lanugage_content" : "lanugage_content_active" }>
         {!isLanguage && (

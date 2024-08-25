@@ -24,10 +24,13 @@ const History = () => {
         margin: "auto",
       }}
     >
-      <Typography variant="h6" fontWeight={450}>
+      <Typography variant="h3">{cur_lang == "en" ? "Tirupati in South India" : "தென் பாரதத்தின் திருப்பதி" }</Typography>
+      <Typography variant="h5" fontWeight={400} sx={{marginBottom:"30px"}}>
         {t("his-content-1")}
       </Typography>
-      <Typography variant="h6" mt={1} fontWeight={450}>
+      
+      <Typography variant="h3">{cur_lang == "en" ? "Structure of the temple" : "கோவிலின் அமைப்பு" }</Typography>
+      <Typography variant="h5" mt={1} fontWeight={400} mb={3}>
         {t("his-content-2")}
       </Typography>
       {isVisible && (
@@ -49,34 +52,35 @@ const History = () => {
               maxWidth: "210px",
               height: "auto",
               width: "100%",
+              marginRight:"20px"
             }}
           />
-          <div className="ml-6">
+          <div className="ml-6 mt-10">
             {cur_lang == "ta" ? (
               <>
                 <div className="flex">
-                  <Typography variant="h6" fontWeight={450}>
+                  <Typography variant="h4" fontWeight={600} mb={1}>
                     மூலவர்{" "}
                   </Typography>
-                  <Typography variant="h6" fontWeight={600} ml={1}>
+                  <Typography variant="h4" fontWeight={450} ml={1}>
                     : திருவேங்கடமுடையான்
                   </Typography>
                 </div>
 
                 <div className="flex">
-                  <Typography variant="h6" fontWeight={450}>
+                  <Typography variant="h4" fontWeight={600}  mb={1}>
                     உத்சவர்{" "}
                   </Typography>
-                  <Typography variant="h6" fontWeight={600} ml={0.4}>
+                  <Typography variant="h4" fontWeight={450} ml={0.4}>
                     : ஸ்ரீ பாலாஜி
                   </Typography>
                 </div>
 
                 <div className="flex">
-                  <Typography variant="h6" fontWeight={450}>
+                  <Typography variant="h4" fontWeight={600} mb={1}>
                     தாயார்{" "}
                   </Typography>
-                  <Typography variant="h6" fontWeight={600} ml={1}>
+                  <Typography variant="h4" fontWeight={450} ml={1}>
                     : பத்மாவதி
                   </Typography>
                 </div>
@@ -84,29 +88,28 @@ const History = () => {
             ) : (
               <>
                 <div className="flex">
-                  <Typography variant="h6" fontWeight={450}>
-                    மூலவர்{" "}
+                  <Typography variant="h4" fontWeight={600}  mb={1}>
+                  Source{" "}
                   </Typography>
-                  <Typography variant="h6" fontWeight={600} ml={1}>
-                    : திருவேங்கடமுடையான்
-                  </Typography>
-                </div>
-
-                <div className="flex">
-                  <Typography variant="h6" fontWeight={450}>
-                    உத்சவர்{" "}
-                  </Typography>
-                  <Typography variant="h6" fontWeight={600} ml={0.4}>
-                    : ஸ்ரீ பாலாஜி
+                  <Typography variant="h4" fontWeight={450} ml={1}>
+                    : Thiruvenkatamudayan
                   </Typography>
                 </div>
 
                 <div className="flex">
-                  <Typography variant="h6" fontWeight={450}>
-                    தாயார்{" "}
+                      <Typography variant="h4" fontWeight={600}  mb={1}>Utsavar{" "}
                   </Typography>
-                  <Typography variant="h6" fontWeight={600} ml={1}>
-                    : பத்மாவதி
+                  <Typography variant="h4" fontWeight={450} ml={0.4}>
+                    : Shri Balaji
+                  </Typography>
+                </div>
+
+                <div className="flex">
+                  <Typography variant="h4" fontWeight={600}  mb={1}>
+                  Mother{" "}
+                  </Typography>
+                  <Typography variant="h4" fontWeight={450} ml={1}>
+                    : Padmavati
                   </Typography>
                 </div>
               </>

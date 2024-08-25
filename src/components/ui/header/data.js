@@ -12,13 +12,17 @@ export const NavBarEn = [
     path: "/uthsams",
   },
   {
-    name: "Panchangam",
-    path: "/panchangam",
+    name: "Prayer hall",
+    path: "/prayerhall",
   },
-  {
-    name: "Others",
-    path: "/other",
-  },
+  // {
+  //   name: "Panchangam",
+  //   path: "/panchangam",
+  // },
+  // {
+  //   name: "Others",
+  //   path: "/other",
+  // },
 ];
 
 export const NavBarTn = [
@@ -35,11 +39,15 @@ export const NavBarTn = [
     path: "/uthsams",
   },
   {
-    name: "பஞ்சாங்கம்",
-    path: "/panchangam",
+    name: "பிரார்த்தனை கூடம்",
+    path: "/prayerhall",
   },
-  {
-    name: "மற்றவை",
-    path: "/other",
-  },
+  // {
+  //   name: "பஞ்சாங்கம்",
+  //   path: "/panchangam",
+  // },
+  // {
+  //   name: "மற்றவை",
+  //   path: "/other",
+  // },
 ];

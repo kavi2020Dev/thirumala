@@ -10,6 +10,20 @@
  
 }
 
+.uthsavam_header_txt {
+  font-style: normal;
+  font-weight: 900;
+  background: linear-gradient(92.91deg, #FFD601 1.17%, #BD219B 58.15%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Ensure text color is transparent */
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+}
+
+
 .uthsavam_content {
     background-color: #FFEB97;
     padding: 20px;
